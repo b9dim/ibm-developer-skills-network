@@ -1,0 +1,63 @@
+# Express Book Review API - cURL Commands for Assignment Submission
+# Server should be running on http://localhost:5000
+
+# ============================================
+# githubrepo - Fork verification
+# ============================================
+curl https://api.github.com/repos/YOUR_USERNAME/expressBookReview
+
+# ============================================
+# getallbooks - Get all books
+# ============================================
+curl http://localhost:5000/books
+
+# ============================================
+# getbooksbyISBN - Get book by ISBN
+# ============================================
+curl http://localhost:5000/books/isbn/978-0-123456-78-9
+
+# ============================================
+# getbooksbyauthor - Get books by author
+# ============================================
+curl http://localhost:5000/books/author/George%20Orwell
+
+# ============================================
+# getbooksbytitle - Get books by title
+# ============================================
+curl http://localhost:5000/books/title/The%20Great%20Gatsby
+
+# ============================================
+# getbookreview - Get initial book review
+# ============================================
+curl http://localhost:5000/books/978-0-123456-78-9/review
+
+# ============================================
+# register - Register new user
+# ============================================
+curl -X POST http://localhost:5000/register \
+  -H "Content-Type: application/json" \
+  -d "{\"username\":\"testuser\",\"password\":\"testpass123\"}"
+
+# ============================================
+# login - Login and get token
+# ============================================
+curl -X POST http://localhost:5000/login \
+  -H "Content-Type: application/json" \
+  -d "{\"username\":\"testuser\",\"password\":\"testpass123\"}"
+
+# Save the token from the response above, then use it in the next commands
+# Replace YOUR_TOKEN_HERE with the actual token
+
+# ============================================
+# reviewadded - Add or update review
+# ============================================
+curl -X PUT http://localhost:5000/books/978-0-123456-78-9/review \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -d "{\"review\":\"Amazing book! Highly recommended.\"}"
+
+# ============================================
+# deletereview - Delete review
+# ============================================
+curl -X DELETE http://localhost:5000/books/978-0-123456-78-9/review \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"

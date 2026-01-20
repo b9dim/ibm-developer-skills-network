@@ -1,0 +1,46 @@
+# Example cURL command and expected output for githubrepo
+
+# Command:
+curl https://api.github.com/repos/YOUR_USERNAME/expressBookReview
+
+# Expected Output (example):
+{
+  "id": 123456789,
+  "node_id": "R_kgDO...",
+  "name": "expressBookReview",
+  "full_name": "YOUR_USERNAME/expressBookReview",
+  "private": false,
+  "owner": {
+    "login": "YOUR_USERNAME",
+    ...
+  },
+  "fork": true,
+  "parent": {
+    "id": 987654321,
+    "node_id": "R_kgDO...",
+    "name": "expressBookReview",
+    "full_name": "ibm-developer-skills-network/expressBookReview",
+    "owner": {
+      "login": "ibm-developer-skills-network",
+      ...
+    },
+    ...
+  },
+  "source": {
+    "id": 987654321,
+    "node_id": "R_kgDO...",
+    "name": "expressBookReview",
+    "full_name": "ibm-developer-skills-network/expressBookReview",
+    "owner": {
+      "login": "ibm-developer-skills-network",
+      ...
+    },
+    ...
+  },
+  ...
+}
+
+# Key fields to verify:
+# - "fork": true (confirms it's a fork)
+# - "parent.full_name": "ibm-developer-skills-network/expressBookReview" (confirms parent repo)
+# - "source.full_name": "ibm-developer-skills-network/expressBookReview" (confirms source repo)
